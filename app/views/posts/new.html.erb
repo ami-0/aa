@@ -1,0 +1,51 @@
+<h1>fashiongram</h1>
+<h3>新規投稿ページ</h3>
+<%= form_for @post do |f| %>
+
+# データ型がstringで自由記述の入力フォーム
+  <div class="field">
+    <%= f.label :height %>
+    <%= f.text_field :height, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  
+  <div class="field">
+  <%= f.label :weight %>
+  <%= f.text_field :weight, :size => 30 %>
+</div>
+
+<div class="field">
+<%= f.label :brand %>
+<%= f.text_field :brand, :size => 30 %>
+</div>
+
+# データ型がstringで選択式の入力フォーム
+  <div class="field">
+    <%= f.label :bone  %>
+    <%= f.select :bone, 
+    [["ストレート", "ストレート"], 
+    ["ウェーブ", "ウェーブ"], 
+    ["ナチュラル", "ナチュラル"],
+    ["不明", "不明"]], include_blank: "選択して下さい" %>
+  </div>
+
+# データ型がintegerで数字のみを入力するフォーム
+  <div class="field">
+    <%= f.label :price  %>
+    <%= f.number_field :price, :size => 10 %>
+  </div>
+
+# データ型がtextで自由記述の入力フォーム
+  <div class="field">
+    <%= f.label :about  %>
+    <%= f.text_area :about, :size => "30x2" %>
+  </div>
+
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", posts_path %>

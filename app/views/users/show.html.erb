@@ -1,0 +1,43 @@
+<h3>プロフィール</h3>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p><%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "プロフィールを編集する", edit_user_registration_path %>
+<% end %>
+
+<% if @user.id == current_user.id %>
+    <%= @msg %>
+<% else %>
+
+    <% if @isRoom == true %>
+        <p><%= link_to 'DMへ', room_path(@roomId) %></p>
+    <% else %>
+        <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e|%>
+                <% e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+        <%= f.submit "DMを開始する"%>
+        <% end %>
+    <% end %>
+
+<h2><%= @user.name %>の投稿</h2>
+<% @user.posts.each do |t| %>
+  <%= t.user.name %>
+  <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
+ 
+<% end %>
+
+<!-- 以下はいいね機能を実装している場合-->
+<h2><%= @user.name %>がいいねした投稿</h2>
+<% @user.liked_posts.each do |t| %>
+  <%= t.user.name %>
+ 
+<% end %>
+
+<% end %>
+
+<!-- ここまで-->
+
+<%= link_to "すべての投稿一覧に戻る", posts_path %>
