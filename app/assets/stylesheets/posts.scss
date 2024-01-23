@@ -1,8 +1,14 @@
+.search-title{
+    width: 100%;
+
 .posts-container{
-    display:flex;
+    display: flex;
     width: 100%;
 }
 
 .posts{
+    display: flex;
     width: 33%;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

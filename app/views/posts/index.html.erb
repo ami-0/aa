@@ -2,6 +2,14 @@
 
 <%= link_to "新規投稿へ", new_post_path %>
 
+<div class="search-title">
+  <%= link_to "ウェーブ", posts_wave_path %>
+<%= link_to "ストレート", posts_straight_path %>
+<%= link_to "ナチュラル", posts_natural_path %>
+<%= link_to "不明", posts_humei_path %>
+
+</div>
+
 <% if user_signed_in? %>
   <%= link_to "マイページへ", user_path(current_user.id) %>
 <% end %>
@@ -38,11 +46,3 @@
   <% end %>
       </div>
   <% end %>
-
-  <%= link_to "ウェーブ", posts_wave_path %>
-<%= link_to "ストレート", posts_straight_path %>
-<%= link_to "ナチュラル", posts_natural_path %>
-<%= link_to "不明", posts_humei_path %>
-
-
-</div>
